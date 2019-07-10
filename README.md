@@ -21,11 +21,11 @@ sc start GpuPerfCounters
 ```
 3. Open up the `PerfMonitorConfig.xml` file and configure to your needs.
 
-`<Process>Taskmgr</Process>`: This the executable name, without the .exe.
+    `<Process>Taskmgr</Process>`: This the executable name, without the .exe.
 
-`<CycleTime>0</CycleTime>`: This will ADD time to the cycles. By default the script should cycle every second.
+    `<CycleTime>0</CycleTime>`: This will ADD time to the cycles. By default the script should cycle every second.
 
-`<LogFolder>./Logs</LogFolder>`: Specify a specific log folder here.
+    `<LogFolder>./Logs</LogFolder>`: Specify a specific log folder here.
 
 ![Process Name](doc/images/1.png)
     
