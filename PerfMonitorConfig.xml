@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Settings>
+    <Process>DCS</Process> <!--> Process .Exe <-->
+    <CycleTime>0</CycleTime>  <!--> Seconds, use this only if you desire long cycle times. <-->
+    <LogFolder>./Logs</LogFolder>   <!--> Specify log folder here. <-->
+</Settings>
