@@ -1,10 +1,10 @@
 # Performance Monitor for Windows & NVIDIA GPUs
-####Version 1.2 by Mr_Superjaffa#5430
+####Version 1.3 by Mr_Superjaffa#5430
 ####Thanks to Alexey Kamenev for his GPUPerfCounters
 
-The goal with this project was to collect system perfomance data in regards to a specified application and output this to CSV.
+The goal with this project was to collect system perfomance data in regards to a specified application and output to CSV.
 
-![Performance Monitor](doc/images/2.png)
+![Perf Monitor](doc/images/2.png)
 
 #### Requirements
 1. NVIDIA GPU. Both TCC and WDDM Modes are supported. AMD GPU support not guaranteed.
@@ -22,7 +22,9 @@ sc start GpuPerfCounters
 3. Open up the `PerfMonitorConfig.xml` file and configure to your needs.
 
 `<Process>Taskmgr</Process>`: This the executable name, without the .exe.
+
 `<CycleTime>0</CycleTime>`: This will ADD time to the cycles. By default the script should cycle every second.
+
 `<LogFolder>./Logs</LogFolder>`: Specify a specific log folder here.
 
 ![Process Name](doc/images/1.png)
