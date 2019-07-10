@@ -74,31 +74,6 @@ Do {
             $CPUHandles = $Procs.Handles | Measure-Object -Sum | Select-Object Sum
             $CPUHandles = $CPUHandles.Sum
 
-            #$CPUUsage = (Get-Counter "\Process($process)\% Processor Time").CounterSamples | Select-Object InstanceName, @{Name="CPU %";Expression={[Decimal]::Round(($_.CookedValue / $CpuCores), 2)}}
-            #$CPUUsage = $CPUUsage.'CPU %'
-            <#
-            $GPUTimePercent = (Get-Counter "\GPU(_total)\% GPU Time").CounterSamples | Select-Object CookedValue
-            $GPUTimePercent = $GPUTimePercent.CookedValue
-
-            $GPUMemRWPercent = (Get-Counter "\GPU(_total)\% GPU Memory Reads/Writes").CounterSamples | Select-Object CookedValue
-            $GPUMemRWPercent = $GPUMemRWPercent.CookedValue
-
-            $GPUMemUsedPercent = (Get-Counter "\GPU(_total)\% GPU Memory Used").CounterSamples | Select-Object CookedValue
-            $GPUMemUsedPercent = [int64]$GPUMemUsedPercent.CookedValue
-
-            $GPUMemUsedMB = (Get-Counter "\GPU(_total)\GPU Memory Used (MiB)").CounterSamples | Select-Object CookedValue
-            $GPUMemUsedMB = $GPUMemUsedMB.CookedValue
-
-            $GPUPowerUsage = (Get-Counter "\GPU(_total)\GPU Power Usage (Watts)").CounterSamples | Select-Object CookedValue
-            $GPUPowerUsage = $GPUPowerUsage.CookedValue
-
-            $GPUTemp = (Get-Counter "\GPU(_total)\GPU Temperature (in degrees C)").CounterSamples | Select-Object CookedValue
-            $GPUTemp = $GPUTemp.CookedValue
-
-            $GPUFanSpeed = (Get-Counter "\GPU(_total)\% GPU Fan Speed").CounterSamples | Select-Object CookedValue
-            $GPUFanSpeed = $GPUFanSpeed.CookedValue
-            #>
-
             $CounterOutput = (Get-Counter $CounterPaths).CounterSamples
 
             [int64]$CPUUsage = $CounterOutput[0].CookedValue
