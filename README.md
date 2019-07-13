@@ -45,4 +45,4 @@ GpuPerfCounters.exe -uninstall
 
 #### Limitations
 
-1. GPU data is system wide, not application specific. Everything else is fine.
+1. GPU data is system wide, not application specific. All other values are process specific.
