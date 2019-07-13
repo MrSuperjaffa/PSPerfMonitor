@@ -8,7 +8,6 @@ $Process = $Config.Settings.Process
 $CycleTime = $Config.Settings.CycleTime
 $LogFolder = $Config.Settings.LogFolder
 $ErrorActionPreference = 'silentlycontinue'
-$CpuCores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors
 
 $CounterPaths = (
                 "\Process($process)\% Processor Time",
@@ -26,25 +25,21 @@ Write-Output "Perf Monitor $version by Mr_Superjaffa#5430"
 Do {
     If (Get-Process $Process) {
         Write-Output "$Process found! Starting output..."
-        # Prepping our log and CSV
+        # Prepping our CSV timestamp
         $LogTimestamp = (Get-Date).ToString('MMddyyyy-hhmmss')
 
-        # Setting our log path
-        If (Test-Path $LogFolder) {
-            #$LogPath = Join-Path -Path $LogFolder -ChildPath "PerfLog-$Process-$LogTimestamp.log"
+        # Setting our CSV path
+        If ($LogFolder) {
             $CSVPath = Join-Path -Path $LogFolder -ChildPath "PerfLog-$Process-$LogTimestamp.csv"
         } Else {
-            #$LogPath = "Logs\PerfLog-$Process-$LogTimestamp.log"
-            $CSVPath = "Logs\PerfLog-$Process-$LogTimestamp.csv"
+            $CSVPath = ".\Logs\PerfLog-$Process-$LogTimestamp.csv"
         }
-
-        Write-Output "Perf Monitor $version by Mr_Superjaffa#5430" | Out-File -FilePath $LogPath -Append
 
         $CSVFormat = "Timestamp,Process,Working Set (MB),Private Memory (MB),Non-Paged System Memory (MB),Paged System Memory (MB),Paged Memory (MB),Virtual Memory (MB),CPU Handles,CPU Usage (%),GPU Usage (%),GPU Memory Reads/Writes (%),GPU Memory Used (%),GPU Memory Used (MB),GPU Power Usage (Watts),GPU Temp (C),GPU Fan Speed (%)"
 
-        # Beginning log output
-        Write-Output "`n"
-        Out-File -FilePath $CSVPath -InputObject $CSVFormat
+        # Beginning CSV output
+        New-Item $CSVPath -Force
+        Out-File -FilePath $CSVPath -InputObject $CSVFormat -Force
 
         While (Get-Process $Process) {
             # Heres where the magic happens.
@@ -52,7 +47,6 @@ Do {
             $Procs = Get-Process $Process
             $ChildProcs = ($Procs.ProcessName).Count
 
-            
             $WorkingSet = $Procs.WorkingSet64 | Measure-Object -Sum | Select-Object Sum
             $WorkingSet = [int64]($WorkingSet.Sum / 1MB)
 
