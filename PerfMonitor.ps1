@@ -1,8 +1,8 @@
-# PERF MONITOR v1.3
+# PERF MONITOR v1.3.1
 # Tony Unruh
 # Mr_Superjaffa#5430
 
-$version = "v1.3"
+$version = "v1.3.1"
 [xml]$Config = Get-Content "./PerfMonitorConfig.xml"
 $Process = $Config.Settings.Process
 $CycleTime = $Config.Settings.CycleTime

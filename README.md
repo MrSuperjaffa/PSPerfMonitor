@@ -1,6 +1,6 @@
 # Performance Monitor for Windows & NVIDIA GPUs
-Version 1.3 by Mr_Superjaffa#5430.
-Thanks to Alexey Kamenev for his GPUPerfCounters.
+Version 1.3.1 by Mr_Superjaffa#5430
+Thanks to Alexey Kamenev for his GPUPerfCounters
 
 The goal with this project was to collect system perfomance data in regards to a specified application and output to CSV.
 
@@ -45,4 +45,4 @@ GpuPerfCounters.exe -uninstall
 
 #### Limitations
 
-1. GPU data is system wide, not application specific. All other values are process specific.
+1. GPU data is system wide, not application specific. Everything else is fine.
